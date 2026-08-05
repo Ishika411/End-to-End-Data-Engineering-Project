@@ -1,0 +1,51 @@
+                AdventureWorks CSV Files
+                         │
+                         ▼
+                Azure Data Lake Storage Gen2
+                  (Bronze Container)
+                         │
+                         ▼
+              Azure Data Factory Pipeline
+          (Copies source files into Bronze)
+                         │
+                         ▼
+                Azure Databricks Notebook
+        (OAuth Authentication using Service Principal)
+                         │
+                         ▼
+              Read CSV files from Bronze
+                         │
+                         ▼
+                Data Transformations
+      ┌───────────────────────────────────────┐
+      │ Calendar                              │
+      │ • Extract Month & Year                │
+      │                                       │
+      │ Customers                             │
+      │ • Create FullName                     │
+      │                                       │
+      │ Products                              │
+      │ • Clean ProductSKU                    │
+      │ • Simplify ProductName                │
+      │                                       │
+      │ Sales                                 │
+      │ • Convert StockDate                   │
+      │ • Replace Order Number Prefix         │
+      │ • Create Multiply Column              │
+      │                                       │
+      │ Returns, Territories, Categories      │
+      │ • Basic Cleaning                      │
+      └───────────────────────────────────────┘
+                         │
+                         ▼
+          Write Parquet Files to Silver Layer
+          (Azure Data Lake Storage Gen2)
+                         │
+                         ▼
+             Analytical Queries using PySpark
+      • Orders per Day
+      • Average Product Cost
+      • Product Subcategory Count
+      • Home Ownership Analysis
+      • Customer Income Analysis
+      • Territory-wise Returns
